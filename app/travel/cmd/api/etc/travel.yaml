@@ -1,0 +1,38 @@
+Name: travel-api
+Host: 0.0.0.0
+Port: 9553
+Mode: dev
+
+Log:
+  ServiceName: travel-api
+  Level: error
+
+# 监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4006
+  Path: /metrics
+
+# 链路追踪
+Telemetry:
+  Name: travel-api
+  Endpoint: http://jaeger:6831/api/trace
+  Sampler: 1.0
+  Batcher: jaeger
+
+DB:
+  DataSource: root:123456@tcp(mysql:3306)/look_cp?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Cache:
+  - Host: redis:6379
+    Pass: hufeng123456
+
+# rpc
+UsercenterRpcConf:
+  Endpoints:
+    - 127.0.0.1:9554
+  NonBlock: true
+
+TravelRpcConf:
+  Endpoints:
+    - 127.0.0.1:9553
+  NonBlock: true

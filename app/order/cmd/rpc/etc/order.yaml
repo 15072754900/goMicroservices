@@ -1,0 +1,26 @@
+Name: order-rpc
+ListenOn: 0.0.0.0:9651
+Mode: dev
+
+# rpc
+TravelRpcConf:
+  Endpoints:
+    - 127.0.0.1:9553
+  NonBlock: true
+
+#DB、Redis
+DB:
+  DataSource: root:123456@tcp(mysql:3306)/look_cp?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Cache:
+  - Host: redis:6379
+    Pass: hufeng123456
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: hufeng123456
+  Key: order-rpc
+
+Log:
+  ServiceName: order-rpc
+  Level: error

@@ -1,0 +1,24 @@
+Name: order
+Host: 0.0.0.0
+Port: 9551
+Mode: dev
+
+# jwt AccessSecret
+JwtAuth:
+  AccessSecret: hufeng123456
+
+# rpc 注册相关的rpc服务
+OrderRpcConf:
+  EndPoints:
+    - 127.0.0.1:9551
+  NonBlock: true
+
+PaymentRpcConf:
+  EndPoints:
+    - 127.0.0.1:9552
+  NonBlock: true
+
+TravelRpcConf:
+  EndPoints:
+    - 127.0.0.1:9553
+  NonBlock: true

@@ -1,0 +1,37 @@
+Name: payment-rpc
+ListenOn: 0.0.0.0:9652
+Mode: dev
+
+#监控
+Prometheus:
+  Host: 0.0.0.0
+  Port: 4005
+  Path: /metrics
+
+#链路追踪
+Telemetry:
+  Name: payment-rpc
+  Endpoint: http://jaeger:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger
+
+Log:
+  ServiceName: payment-rpc
+  Level: error
+
+DB:
+  DataSource: root:123456@tcp(mysql:3306)/look_cp?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Cache:
+  - Host: redis:6379
+    Pass: hufeng123456
+
+Redis:
+  Host: redis:6379
+  Type: node
+  Pass: hufeng123456
+  Key: usercenter-rpc
+
+KqPaymentUpdatePayStatusConf:
+  Brokers:
+    - kafka:9092
+  Topic: payment-update-paystatus-topic
